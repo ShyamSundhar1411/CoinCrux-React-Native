@@ -1,11 +1,14 @@
 import React from "react";
 import { AccountScreenView } from "../components/styles/account.styles";
-import { Text } from "react-native";
+import { SafeAreaView, Text } from "react-native";
+import { styles } from "../../../components/styles/global.styles";
 
 export const AccountScreen = () => {
   return (
-    <AccountScreenView>
-      <Text>Account Screen</Text>
-    </AccountScreenView>
+    <SafeAreaView style={styles.androidSafeArea}>
+      <AccountScreenView>
+        <Text>Account Screen</Text>
+      </AccountScreenView>
+    </SafeAreaView>
   );
 };

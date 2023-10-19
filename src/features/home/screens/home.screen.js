@@ -1,11 +1,14 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, SafeAreaView } from "react-native";
+import { styles } from "../../../components/styles/global.styles";
 import { HomeScreenView } from "../components/styles/home.styles";
 
 export const HomeScreen = () => {
   return (
-    <HomeScreenView>
-      <Text>Home Screen</Text>
-    </HomeScreenView>
+    <SafeAreaView style={styles.androidSafeArea}>
+      <HomeScreenView>
+        <Text>Home Screen</Text>
+      </HomeScreenView>
+    </SafeAreaView>
   );
 };
