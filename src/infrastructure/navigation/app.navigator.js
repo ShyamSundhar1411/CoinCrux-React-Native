@@ -5,7 +5,7 @@ import { MyFeedScreen } from "../../features/feed/screens/my.feed.screen";
 import { AccountScreen } from "../../features/account/screens/account.screen";
 import { styles } from "../../components/styles/global.styles";
 import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "react-native-paper";
+import { useTheme } from "styled-components";
 
 const Tab = createBottomTabNavigator();
 const TAB_ICON = {

@@ -1,7 +1,5 @@
 import styled from "styled-components/native";
 
-export const HomeScreenView = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
+export const SearchBoxContainer = styled.View`
+  padding: ${(props) => props.theme.space[3]};
 `;
