@@ -1,5 +1,5 @@
 import { StatusBar, Platform, StyleSheet } from "react-native";
-
+import styled from "styled-components/native";
 export const styles = StyleSheet.create({
   androidSafeArea: {
     flex: 1,
@@ -15,3 +15,7 @@ export const styles = StyleSheet.create({
     elevation: 5,
   },
 });
+
+export const ThemeText = styled.Text`
+  color: ${(props) => props.theme.colors.text.theme};
+`;
