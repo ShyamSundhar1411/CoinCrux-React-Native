@@ -1,18 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { lightTheme, darkTheme } from "./src/infrastructure/theme/index";
 import { Navigation } from "./src/infrastructure/navigation";
-import {
-  ThemeContextProvider,
-  ThemeContext,
-} from "./src/infrastructure/theme/theme.services";
+import { ThemeProvider } from "styled-components/native";
+import { theme } from "./src/infrastructure/theme/index";
 export default function App() {
   return (
     <>
-      <ThemeContextProvider lightTheme={lightTheme} darkTheme={darkTheme}>
+      <ThemeProvider theme={theme}>
         <Navigation />
         <ExpoStatusBar style="auto" />
-      </ThemeContextProvider>
+      </ThemeProvider>
     </>
   );
 }
