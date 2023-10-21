@@ -1,66 +1,66 @@
 export const categoryData = [
   {
     name: "Bitcoin",
-    assetImage: require("../../assets/categories/bitCoinLogo.png"),
+    assetImage: "./../../../assets/bitCoinLogo.png",
   },
   {
     name: "Ethereum",
-    assetImage: require("../../assets/categories/etheriumLogo.png"),
+    assetImage: "./../../../assets/etheriumLogo.png",
   },
   {
     name: "Analytics",
-    assetImage: require("../../assets/categories/analyticsLogo.png"),
+    assetImage: "./../../../assets/analyticsLogo.png",
   },
   {
     name: "Exchange",
-    assetImage: require("../../assets/categories/exchangeLogo.png"),
+    assetImage: "./../../../assets/exchangeLogo.png",
   },
   {
     name: "Altcoins",
-    assetImage: require("../../assets/categories/legalLogo.png"),
+    assetImage: "./../../../assets/legalLogo.png",
   },
   {
     name: "Markets",
-    assetImage: require("../../assets/categories/marketsLogo.png"),
+    assetImage: "./../../../assets/marketsLogo.png",
   },
   {
     name: "Metaverse",
-    assetImage: require("../../assets/categories/metaverseLogo.png"),
+    assetImage: "./../../../assets/metaverseLogo.png",
   },
   {
     name: "Blockchain",
-    assetImage: require("../../assets/categories/blockchainLogo.png"),
+    assetImage: "./../../../assets/blockchainLogo.png",
   },
   {
     name: "GameFi",
-    assetImage: require("../../assets/categories/gameFiLogo.png"),
+    assetImage: "./../../../assets/gameFiLogo.png",
   },
   {
     name: "Finance",
-    assetImage: require("../../assets/categories/financeLogo.png"),
+    assetImage: "./../../../assets/financeLogo.png",
   },
   {
     name: "Others",
-    assetImage: require("../../assets/categories/othersLogo.png"),
+    assetImage: "./../../../assets/othersLogo.png",
   },
   {
     name: "Mining",
-    assetImage: require("../../assets/categories/miningLogo.png"),
+    assetImage: "./../../../assets/miningLogo.png",
   },
   {
     name: "Security",
-    assetImage: require("../../assets/categories/securityLogo.png"),
+    assetImage: "./../../../assets/securityLogo.png",
   },
   {
     name: "Economy",
-    assetImage: require("../../assets/categories/economyLogo.png"),
+    assetImage: "./../../../assets/economyLogo.png",
   },
   {
     name: "Banking",
-    assetImage: require("../../assets/categories/bankingLogo.png"),
+    assetImage: "./../../../assets/bankingLogo.png",
   },
   {
     name: "World",
-    assetImage: require("../../assets/categories/worldLogo.png"),
+    assetImage: "./../../../assets/worldLogo.png",
   },
 ];
