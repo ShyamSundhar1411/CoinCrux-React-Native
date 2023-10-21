@@ -4,7 +4,7 @@ import { HomeScreen } from "../../features/home/screens/home.screen";
 import { MyFeedScreen } from "../../features/feed/screens/my.feed.screen";
 import { styles } from "../../components/styles/global.styles";
 import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "styled-components";
+import { useTheme } from "../../infrastructure/theme/theme.services";
 import { SettingsNavigator } from "./settings.navigator";
 
 const Tab = createBottomTabNavigator();
@@ -17,7 +17,7 @@ const TAB_ICON = {
 const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const theme = useTheme();
+  const { theme } = useTheme();
   return {
     tabBarActiveTintColor: theme.colors.bg.theme,
     tabBarInactiveTintColor: "gray",
@@ -41,7 +41,6 @@ const createScreenOptions = ({ route }) => {
   };
 };
 export const AppNavigator = () => {
-  const theme = useTheme();
   return (
     <Tab.Navigator screenOptions={createScreenOptions}>
       <Tab.Screen

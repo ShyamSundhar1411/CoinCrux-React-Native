@@ -9,8 +9,10 @@ import {
 } from "./styles/home.styles";
 import { CategoryTileComponent } from "./CategoryTileComponent";
 import { Spacer } from "../../../components/Spacer";
+import { useTheme } from "../../../infrastructure/theme/theme.services";
 export const CategoryDisplayComponent = () => {
   const [expanded, setExpanded] = useState(false);
+  const { theme } = useTheme();
   const renderCategories = () => {
     const dataRendered = expanded ? categoryData : categoryData.slice(0, 4);
     return (
@@ -25,12 +27,14 @@ export const CategoryDisplayComponent = () => {
     );
   };
   return (
-    <CategoryDisplayContainer>
-      <HeadingText>Categories</HeadingText>
-      <CategoryListContainer>
+    <CategoryDisplayContainer theme={theme}>
+      <HeadingText theme={theme}>Categories</HeadingText>
+      <CategoryListContainer theme={theme}>
         {renderCategories()}
         <TouchableOpacity onPress={() => setExpanded(!expanded)}>
-          <ThemeText>{expanded ? "View Less ▲" : "View All ▼"}</ThemeText>
+          <ThemeText theme={theme}>
+            {expanded ? "View Less ▲" : "View All ▼"}
+          </ThemeText>
         </TouchableOpacity>
       </CategoryListContainer>
     </CategoryDisplayContainer>
