@@ -63,4 +63,12 @@ export const categoryData = [
     name: "World",
     assetImage: require("../../assets/categories/worldLogo.png"),
   },
-];
+  {
+    name: "India",
+    assetImage: require("../../assets/categories/worldLogo.png"),
+  },
+  {
+    name: "Regulations",
+    assetImage: require("../../assets/categories/worldLogo.png"),
+  },
+].sort((a, b) => a.name.localeCompare(b.name));

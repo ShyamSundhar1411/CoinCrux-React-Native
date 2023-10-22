@@ -19,3 +19,9 @@ export const styles = StyleSheet.create({
 export const ThemeText = styled.Text`
   color: ${(props) => props.theme.colors.text.theme};
 `;
+
+export const LoaderView = styled.View`
+  position: absolute;
+  top: 30%;
+  left: 50%;
+`;

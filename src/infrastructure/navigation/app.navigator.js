@@ -6,6 +6,7 @@ import { styles } from "../../components/styles/global.styles";
 import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
 import { SettingsNavigator } from "./settings.navigator";
+import { NewsContextProvider } from "../../services/news/news.context";
 
 const Tab = createBottomTabNavigator();
 const TAB_ICON = {
@@ -42,37 +43,39 @@ const createScreenOptions = ({ route }) => {
 };
 export const AppNavigator = () => {
   return (
-    <Tab.Navigator screenOptions={createScreenOptions}>
-      <Tab.Screen
-        options={{
-          headerTitleAlign: "center",
-          headerStyle: {
-            backgroundColor: "transparent",
-          },
-        }}
-        name="Home"
-        component={HomeScreen}
-      />
-      <Tab.Screen
-        options={{
-          headerTitleAlign: "center",
-          headerStyle: {
-            backgroundColor: "transparent",
-          },
-        }}
-        name="Feed"
-        component={MyFeedScreen}
-      />
-      <Tab.Screen
-        options={{
-          headerTitleAlign: "center",
-          headerStyle: {
-            backgroundColor: "transparent",
-          },
-        }}
-        name="Settings"
-        component={SettingsNavigator}
-      />
-    </Tab.Navigator>
+    <NewsContextProvider>
+      <Tab.Navigator screenOptions={createScreenOptions}>
+        <Tab.Screen
+          options={{
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: "transparent",
+            },
+          }}
+          name="Home"
+          component={HomeScreen}
+        />
+        <Tab.Screen
+          options={{
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: "transparent",
+            },
+          }}
+          name="Feed"
+          component={MyFeedScreen}
+        />
+        <Tab.Screen
+          options={{
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: "transparent",
+            },
+          }}
+          name="Settings"
+          component={SettingsNavigator}
+        />
+      </Tab.Navigator>
+    </NewsContextProvider>
   );
 };

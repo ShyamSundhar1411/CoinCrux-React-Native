@@ -52,3 +52,7 @@ export const CategoryListContainer = styled.View`
   border-radius: ${(props) => props.theme.sizes[1]};
   border-width: 1px;
 `;
+
+export const NewsDisplayContainer = styled.View`
+  padding: ${(props) => props.theme.space[3]};
+`;
