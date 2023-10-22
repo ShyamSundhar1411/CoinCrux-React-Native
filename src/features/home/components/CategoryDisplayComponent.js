@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, TouchableOpacity } from "react-native";
+import { FlatList, TouchableOpacity, View } from "react-native";
 import { ThemeText } from "../../../components/styles/global.styles";
 import { categoryData } from "../../../data/categoryData";
 import {
@@ -15,6 +15,7 @@ export const CategoryDisplayComponent = () => {
     const dataRendered = expanded ? categoryData : categoryData.slice(0, 4);
     return (
       <FlatList
+        nestedScrollEnabled={true}
         data={dataRendered}
         numColumns={4}
         keyExtractor={(item) => item.name.toString()}

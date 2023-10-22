@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions, View } from "react-native";
+import { Dimensions, View, Text } from "react-native";
 import { Card } from "react-native-paper";
 import Carousel from "react-native-reanimated-carousel";
 import { AssetChip } from "../../../components/styles/global.styles";
@@ -12,7 +12,7 @@ export const CarouselComponent = ({ data }) => {
       <Carousel
         loop
         width={width}
-        height={height}
+        height={400}
         autoplay={true}
         mode="parallax"
         scrollAnimationDuration={1000}
@@ -25,10 +25,11 @@ export const CarouselComponent = ({ data }) => {
             <Card.Cover source={{ uri: item.coinImage }} />
             <Card.Content>
               <AssetChip>{item.assetName}</AssetChip>
+              <Text>{item.coinDescription}</Text>
             </Card.Content>
           </Card>
         )}
       />
     </View>
-  );
+   );
 };

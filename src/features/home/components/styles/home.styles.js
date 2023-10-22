@@ -1,6 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import styled from "styled-components/native";
 
+const width = Dimensions.get("window").width;
 export const SearchBoxContainer = styled.View`
   padding: ${(props) => props.theme.space[2]};
 `;
@@ -14,6 +15,10 @@ export const HeadingText = styled.Text`
 `;
 
 export const homeStyles = StyleSheet.create({
+  card: {
+    width: width - 40,
+    margin: 10,
+  },
   container: {
     margin: 5,
     height: 70,
@@ -56,5 +61,5 @@ export const CategoryListContainer = styled.View`
 export const NewsDisplayContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
   flex: 1;
-  height: 1000px;
+  height: 100%;
 `;

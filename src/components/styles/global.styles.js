@@ -32,4 +32,5 @@ export const AssetChip = styled(Chip)`
   align-items: center;
   border-width: 1px;
   margin: 10px;
+  justify-content: center;
 `;
