@@ -1,25 +1,27 @@
 import React from "react";
 import { Dimensions, View, Text } from "react-native";
-import { Card } from "react-native-paper";
 import Carousel from "react-native-reanimated-carousel";
+import { Card } from "react-native-paper";
 import { AssetChip } from "../../../components/styles/global.styles";
+import { MyFeedScreenView } from "../components/styles/feed.styles";
 
-export const CarouselComponent = ({ data }) => {
+export const FeedCarouselComponent = ({ data }) => {
   const width = Dimensions.get("window").width;
-  const height = width / 2;
+  const height = Dimensions.get("window").height;
   return (
-    <View>
+    <MyFeedScreenView>
       <Carousel
-        loop
+        modeConfig={{
+          snapDirection: "left",
+          stackInterval: 8,
+        }}
+        mode="horizontal-stack"
+        showLength={3}
         width={width}
-        height={400}
-        autoplay={true}
-        mode="parallax"
-        scrollAnimationDuration={1000}
-        onSnapToItem={(index) => console.log(index)}
-        parallaxScrollingScale={0.9}
-        parallaxScrollingOffset={50}
+        height={height}
+        autoPlay={true}
         data={data}
+        onSnapToItem={(index) => console.log(index)}
         renderItem={({ item }) => (
           <Card>
             <Card.Cover source={{ uri: item.coinImage }} />
@@ -30,6 +32,6 @@ export const CarouselComponent = ({ data }) => {
           </Card>
         )}
       />
-    </View>
+    </MyFeedScreenView>
   );
 };
