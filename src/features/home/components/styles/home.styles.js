@@ -55,4 +55,6 @@ export const CategoryListContainer = styled.View`
 
 export const NewsDisplayContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
+  flex: 1;
+  height: 1000px;
 `;

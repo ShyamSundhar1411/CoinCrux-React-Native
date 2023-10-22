@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Text, SafeAreaView } from "react-native";
+import { Text, SafeAreaView, ScrollView } from "react-native";
 import { styles } from "../../../components/styles/global.styles";
 import { SearchBarComponent } from "../components/SearchBarComponent";
 import { CategoryDisplayComponent } from "../components/CategoryDisplayComponent";
@@ -8,7 +8,7 @@ import { NewsDisplayComponent } from "../components/NewsDisplayComponent";
 import { Loader } from "../../../components/Loader";
 
 export const HomeScreen = () => {
-  const { isLoading, newsData } = useContext(NewsContext);
+  const { isLoading } = useContext(NewsContext);
   return (
     <SafeAreaView style={styles.androidSafeArea}>
       {isLoading ? (

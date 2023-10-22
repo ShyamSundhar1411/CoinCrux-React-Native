@@ -1,5 +1,6 @@
 import { StatusBar, Platform, StyleSheet } from "react-native";
 import styled from "styled-components/native";
+import { Chip } from "react-native-paper";
 export const styles = StyleSheet.create({
   androidSafeArea: {
     flex: 1,
@@ -24,4 +25,11 @@ export const LoaderView = styled.View`
   position: absolute;
   top: 30%;
   left: 50%;
+`;
+
+export const AssetChip = styled(Chip)`
+  width: 100px;
+  align-items: center;
+  border-width: 1px;
+  margin: 10px;
 `;
