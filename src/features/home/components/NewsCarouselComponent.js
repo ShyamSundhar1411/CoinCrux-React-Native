@@ -15,6 +15,7 @@ export const CarouselComponent = ({ data }) => {
         height={400}
         autoplay={true}
         mode="parallax"
+        scrollEnabled={false}
         scrollAnimationDuration={1000}
         onSnapToItem={(index) => console.log(index)}
         parallaxScrollingScale={0.9}

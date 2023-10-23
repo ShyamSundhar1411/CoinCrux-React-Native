@@ -7,7 +7,6 @@ export const NewsDisplayComponent = () => {
   const { newsData } = useContext(NewsContext);
   return (
     <NewsDisplayContainer>
-      <HeadingText>Latest News</HeadingText>
       <CarouselComponent data={newsData} />
     </NewsDisplayContainer>
   );

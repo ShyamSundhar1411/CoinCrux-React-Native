@@ -1,37 +1,30 @@
 import React from "react";
-import { Dimensions, View, Text } from "react-native";
-import Carousel from "react-native-reanimated-carousel";
-import { Card } from "react-native-paper";
+import { Dimensions, Image, Text, View } from "react-native";
+import {
+  FeedHeading,
+  MyFeedScreenView,
+} from "../components/styles/feed.styles";
 import { AssetChip } from "../../../components/styles/global.styles";
-import { MyFeedScreenView } from "../components/styles/feed.styles";
 
-export const FeedCarouselComponent = ({ data }) => {
+export const FeedComponent = ({ data }) => {
   const width = Dimensions.get("window").width;
   const height = Dimensions.get("window").height;
   return (
-    <MyFeedScreenView>
-      <Carousel
-        modeConfig={{
-          snapDirection: "left",
-          stackInterval: 8,
-        }}
-        mode="horizontal-stack"
-        showLength={3}
-        width={width}
-        height={height}
-        autoPlay={true}
-        data={data}
-        onSnapToItem={(index) => console.log(index)}
-        renderItem={({ item }) => (
-          <Card>
-            <Card.Cover source={{ uri: item.coinImage }} />
-            <Card.Content>
+    <>
+      {data.map((item, index) => {
+        return (
+          <MyFeedScreenView key={index} height={height} width={width}>
+            <Image
+              source={{ uri: item.coinImage }}
+              style={{ resizeMode: "cover", height: 300, width: width }}
+            />
+            <View style={{ padding: 10 }}>
               <AssetChip>{item.assetName}</AssetChip>
-              <Text>{item.coinDescription}</Text>
-            </Card.Content>
-          </Card>
-        )}
-      />
-    </MyFeedScreenView>
+              <FeedHeading>{item.coinDescription}</FeedHeading>
+            </View>
+          </MyFeedScreenView>
+        );
+      })}
+    </>
   );
 };

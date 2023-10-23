@@ -15,7 +15,6 @@ export const CategoryDisplayComponent = () => {
     const dataRendered = expanded ? categoryData : categoryData.slice(0, 4);
     return (
       <FlatList
-        nestedScrollEnabled={true}
         data={dataRendered}
         numColumns={4}
         keyExtractor={(item) => item.name.toString()}
@@ -27,7 +26,6 @@ export const CategoryDisplayComponent = () => {
   };
   return (
     <CategoryDisplayContainer>
-      <HeadingText>Categories</HeadingText>
       <CategoryListContainer>
         {renderCategories()}
         <TouchableOpacity onPress={() => setExpanded(!expanded)}>
