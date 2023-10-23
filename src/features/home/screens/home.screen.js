@@ -16,7 +16,7 @@ export const HomeScreen = () => {
       <HeadingText>{title}</HeadingText>
     </View>
   );
-  const DATA = [
+  const components = [
     {
       title: "",
       data: [<SearchBarComponent key="search" />],
@@ -36,7 +36,7 @@ export const HomeScreen = () => {
         <Loader isLoading={isLoading} />
       ) : (
         <SectionList
-          sections={DATA}
+          sections={components}
           keyExtractor={(item, index) => item + index}
           renderItem={renderItem}
           renderSectionHeader={renderSectionHeader}

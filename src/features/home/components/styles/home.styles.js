@@ -63,3 +63,7 @@ export const NewsDisplayContainer = styled.View`
   flex: 1;
   height: 100%;
 `;
+
+export const MutedText = styled.Text`
+  color: ${(props) => props.theme.colors.text.disabled};
+`;

@@ -3,8 +3,10 @@ import { Dimensions, Image, Text, View } from "react-native";
 import {
   FeedHeading,
   MyFeedScreenView,
+  FeedDescription,
 } from "../components/styles/feed.styles";
 import { AssetChip } from "../../../components/styles/global.styles";
+import { TimeAgo } from "../../../utils/time.function";
 
 export const FeedComponent = ({ data }) => {
   const width = Dimensions.get("window").width;
@@ -12,15 +14,17 @@ export const FeedComponent = ({ data }) => {
   return (
     <>
       {data.map((item, index) => {
+        const time = TimeAgo(item.createdAt);
         return (
           <MyFeedScreenView key={index} height={height} width={width}>
             <Image
               source={{ uri: item.coinImage }}
-              style={{ resizeMode: "cover", height: 300, width: width }}
+              style={{ resizeMode: "cover", height: 200, width: width }}
             />
             <View style={{ padding: 10 }}>
               <AssetChip>{item.assetName}</AssetChip>
-              <FeedHeading>{item.coinDescription}</FeedHeading>
+              <FeedHeading>{item.coinHeading}</FeedHeading>
+              <FeedDescription>{time}</FeedDescription>
             </View>
           </MyFeedScreenView>
         );

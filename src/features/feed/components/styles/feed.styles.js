@@ -7,5 +7,10 @@ export const MyFeedScreenView = styled.View`
 
 export const FeedHeading = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.h5};
-  padding: ${(props) => props.theme.space[3]};
+  padding-start: ${(props) => props.theme.space[3]};
+`;
+
+export const FeedDescription = styled.Text`
+  font-size: ${(props) => props.theme.fontSizes.body};
+  padding-start: ${(props) => props.theme.space[3]};
 `;

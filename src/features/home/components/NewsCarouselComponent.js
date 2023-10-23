@@ -3,10 +3,10 @@ import { Dimensions, View, Text } from "react-native";
 import { Card } from "react-native-paper";
 import Carousel from "react-native-reanimated-carousel";
 import { AssetChip } from "../../../components/styles/global.styles";
-
+import { MutedText } from "./styles/home.styles";
+import { TimeAgo } from "../../../utils/time.function";
 export const CarouselComponent = ({ data }) => {
   const width = Dimensions.get("window").width;
-  const height = width / 2;
   return (
     <View>
       <Carousel
@@ -21,15 +21,19 @@ export const CarouselComponent = ({ data }) => {
         parallaxScrollingScale={0.9}
         parallaxScrollingOffset={50}
         data={data}
-        renderItem={({ item }) => (
-          <Card>
-            <Card.Cover source={{ uri: item.coinImage }} />
-            <Card.Content>
-              <AssetChip>{item.assetName}</AssetChip>
-              <Text>{item.coinDescription}</Text>
-            </Card.Content>
-          </Card>
-        )}
+        renderItem={({ item }) => {
+          const time = TimeAgo(item.createdAt);
+          return (
+            <Card>
+              <Card.Cover source={{ uri: item.coinImage }} />
+              <Card.Content>
+                <AssetChip>{item.assetName}</AssetChip>
+                <Text>{item.coinHeading}</Text>
+                <MutedText>{time}</MutedText>
+              </Card.Content>
+            </Card>
+          );
+        }}
       />
     </View>
   );

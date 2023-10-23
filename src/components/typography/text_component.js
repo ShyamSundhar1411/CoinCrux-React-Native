@@ -10,7 +10,7 @@ const defaultTextStyles = (theme) => `
 `;
 
 const body = (theme) => `
-    font-size: ${theme.fontSizes.body}
+    font-size: ${theme.fontSizes.body};
 `;
 
 const hint = (theme) => `
@@ -33,12 +33,18 @@ const caption = (theme) => `
     font-family: ${theme.fonts.caption};
     font-weight: ${theme.fontWeights.bold};
 `;
+
+const muted = (theme) => `
+  font-size: ${theme.fontSizes.body};
+  color: ${theme.colors.text.disabled};
+`;
 const variants = {
   body,
   label,
   caption,
   error,
   hint,
+  muted,
 };
 export const Text = styled.Text`
   ${({ theme }) => defaultTextStyles(theme)}

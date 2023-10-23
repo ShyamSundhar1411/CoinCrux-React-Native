@@ -57,6 +57,7 @@ export const AppNavigator = () => {
         />
         <Tab.Screen
           options={{
+            headerShown: false,
             headerTitleAlign: "center",
             headerStyle: {
               backgroundColor: "transparent",
