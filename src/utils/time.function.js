@@ -1,5 +1,5 @@
 import React from "react";
-export const TimeAgo = ({ time }) => {
+export function TimeAgo({ time }) {
   const getTimeDifference = (timestamp) => {
     const current = new Date();
     const previous = new Date(timestamp);
@@ -16,6 +16,5 @@ export const TimeAgo = ({ time }) => {
   };
   time = Date.parse(time);
   const result = getTimeDifference(time);
-  console.log(result);
   return result;
-};
+}

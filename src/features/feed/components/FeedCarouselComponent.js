@@ -14,7 +14,7 @@ export const FeedComponent = ({ data }) => {
   return (
     <>
       {data.map((item, index) => {
-        const time = TimeAgo(item.createdAt);
+        const time = TimeAgo({ time: item.createdAt });
         return (
           <MyFeedScreenView key={index} height={height} width={width}>
             <Image

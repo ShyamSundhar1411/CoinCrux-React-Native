@@ -22,7 +22,8 @@ export const CarouselComponent = ({ data }) => {
         parallaxScrollingOffset={50}
         data={data}
         renderItem={({ item }) => {
-          const time = TimeAgo(item.createdAt);
+          const time = TimeAgo({ time: item.createdAt });
+          console.log(time);
           return (
             <Card>
               <Card.Cover source={{ uri: item.coinImage }} />
