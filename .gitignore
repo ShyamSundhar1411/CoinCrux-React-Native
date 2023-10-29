@@ -24,12 +24,13 @@ npm-debug.*
 yarn-debug.*
 yarn-error.*
 config.js
+.env
 # macOS
 .DS_Store
 *.pem
 
 # local env files
 .env*.local
-
+eas.json
 # typescript
 *.tsbuildinfo
