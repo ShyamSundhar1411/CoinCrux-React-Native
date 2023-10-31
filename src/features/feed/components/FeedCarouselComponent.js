@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Dimensions, Image, View, Animated, PanResponder } from "react-native";
+import { Dimensions, Animated, PanResponder, View, Image } from "react-native";
 import {
   FeedHeading,
   MyFeedScreenView,
@@ -14,39 +14,115 @@ class FeedComponent extends Component {
     this.state = {
       currentIndex: 0,
     };
+    this.width = Dimensions.get("window").width;
+    this.height = Dimensions.get("window").height;
+    this.swipedCardPosition = new Animated.ValueXY({ x: 0, y: -this.height });
     this.position = new Animated.ValueXY();
     this.PanResponder = PanResponder.create({
-      onStartShouldSetPanResponder: (e, gestureState) => true,
+      onStartShouldSetPanResponder: (evt, gestureState) => true,
       onPanResponderMove: (evt, gestureState) => {
-        this.position.setValue({ y: gestureState.dy });
+        if (gestureState.dy > 0 && this.state.currentIndex > 0) {
+          this.swipedCardPosition.setValue({
+            x: 0,
+            y: -this.height + gestureState.dy,
+          });
+        } else {
+          this.position.setValue({ x: 0, y: gestureState.dy });
+        }
       },
-      onPanResponderRelease: (evt, gestureState) => {},
+      onPanResponderRelease: (evt, gestureState) => {
+        if (
+          this.state.currentIndex > 0 &&
+          gestureState.dy > 50 &&
+          gestureState.vy > 0.7
+        ) {
+          Animated.timing(this.swipedCardPosition, {
+            toValue: { x: 0, y: 0 },
+            duration: 400,
+            useNativeDriver: true,
+          }).start(() => {
+            this.setState({ currentIndex: this.state.currentIndex - 1 });
+            this.swipedCardPosition.setValue({ x: 0, y: -this.height });
+          });
+        } else if (-gestureState.dy > 50 && -gestureState.vy > 0.7) {
+          Animated.timing(this.position, {
+            toValue: { x: 0, y: -this.height },
+            duration: 400,
+            useNativeDriver: true,
+          }).start(() => {
+            this.setState({ currentIndex: (this.state.currentIndex + 1) % 10 });
+            this.position.setValue({ x: 0, y: 0 });
+          });
+        } else {
+          Animated.parallel([
+            Animated.spring(this.position, {
+              toValue: { x: 0, y: 0 },
+            }),
+            Animated.spring(this.swipedCardPosition, {
+              toValue: { x: 0, y: -this.height },
+            }),
+          ]);
+        }
+      },
     });
   }
   render() {
     const { data } = this.props;
-    const width = Dimensions.get("window").width;
-    const height = Dimensions.get("window").height;
-
+    const interpolatedStyle = {
+      transform: this.position.getTranslateTransform(),
+    };
     return (
       <>
         {data.map((item, index) => {
           const time = TimeAgo({ time: item.createdAt });
-          return (
-            <Animated.View key={index}>
-              <MyFeedScreenView height={height} width={width}>
-                <Image
-                  source={{ uri: item.coinImage }}
-                  style={{ resizeMode: "cover", height: 200, width: width }}
-                />
-                <View style={{ padding: 10 }}>
-                  <AssetChip>{item.assetName}</AssetChip>
-                  <FeedHeading>{item.coinHeading}</FeedHeading>
-                  <FeedDescription>{time}</FeedDescription>
-                </View>
-              </MyFeedScreenView>
-            </Animated.View>
-          );
+          if (index < this.state.currentIndex) {
+            return null;
+          }
+          if (index == this.state.currentIndex) {
+            return (
+              <Animated.View
+                key={index}
+                style={interpolatedStyle}
+                {...this.PanResponder.panHandlers}
+              >
+                <MyFeedScreenView height={this.height} width={this.width}>
+                  <Image
+                    source={{ uri: item.coinImage }}
+                    style={{
+                      resizeMode: "cover",
+                      height: 200,
+                      width: this.width,
+                    }}
+                  />
+                  <View style={{ padding: 10 }}>
+                    <AssetChip>{item.assetName}</AssetChip>
+                    <FeedHeading>{item.coinHeading}</FeedHeading>
+                    <FeedDescription>{time}</FeedDescription>
+                  </View>
+                </MyFeedScreenView>
+              </Animated.View>
+            );
+          } else {
+            return (
+              <Animated.View key={index}>
+                <MyFeedScreenView height={this.height} width={this.width}>
+                  <Image
+                    source={{ uri: item.coinImage }}
+                    style={{
+                      resizeMode: "cover",
+                      height: 200,
+                      width: this.width,
+                    }}
+                  />
+                  <View style={{ padding: 10 }}>
+                    <AssetChip>{item.assetName}</AssetChip>
+                    <FeedHeading>{item.coinHeading}</FeedHeading>
+                    <FeedDescription>{time}</FeedDescription>
+                  </View>
+                </MyFeedScreenView>
+              </Animated.View>
+            );
+          }
         })}
       </>
     );

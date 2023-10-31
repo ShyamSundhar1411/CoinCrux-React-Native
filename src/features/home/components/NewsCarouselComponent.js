@@ -23,7 +23,6 @@ export const CarouselComponent = ({ data }) => {
         data={data}
         renderItem={({ item }) => {
           const time = TimeAgo({ time: item.createdAt });
-          console.log(time);
           return (
             <Card>
               <Card.Cover source={{ uri: item.coinImage }} />
